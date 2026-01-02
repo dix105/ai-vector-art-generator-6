@@ -1,0 +1,233 @@
+/* Root Variables */
+:root {
+  --primary: #4F46E5;
+  --secondary: #0EA5E9;
+  --accent: #F43F5E;
+  --background: #F8FAFC;
+  --background-alt: #F1F5F9;
+  --surface: #FFFFFF;
+  --text-main: #0F172A;
+  --text-sec: #475569;
+  --border: #E2E8F0;
+  
+  --shadow-solid: 4px 4px 0px #000000;
+  --shadow-solid-hover: 6px 6px 0px #000000;
+  --shadow-solid-sm: 2px 2px 0px #000000;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Brutalist Utility Classes */
+.shadow-brutal {
+  box-shadow: var(--shadow-solid);
+}
+
+.shadow-brutal-sm {
+  box-shadow: var(--shadow-solid-sm);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary);
+  color: white;
+  border: 2px solid black;
+  box-shadow: var(--shadow-solid);
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-solid-hover);
+  background-color: var(--accent);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translate(0, 0);
+  box-shadow: none;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+  background-color: var(--text-sec);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: var(--text-main);
+  border: 2px solid black;
+  box-shadow: var(--shadow-solid);
+  transition: all 0.2s ease;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-solid-hover);
+  background-color: var(--background-alt);
+}
+
+.brutalist-card {
+  border: 2px solid black;
+  box-shadow: var(--shadow-solid);
+}
+
+/* Header States */
+.header-scrolled {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom: 2px solid black;
+}
+
+/* Hero Animations */
+.hero-animation {
+  perspective: 1000px;
+}
+
+.floating-shape {
+  position: absolute;
+  opacity: 0.6;
+  animation: float 20s infinite linear;
+}
+
+.shape-triangle {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid var(--accent);
+  top: 20%;
+  left: 10%;
+  animation-duration: 25s;
+}
+
+.shape-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--secondary);
+  top: 60%;
+  right: 15%;
+  animation-duration: 22s;
+  animation-delay: -5s;
+}
+
+.shape-square {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary);
+  bottom: 20%;
+  left: 20%;
+  transform: rotate(45deg);
+  animation: float-rotate 18s infinite linear;
+}
+
+.shape-bezier {
+  width: 200px;
+  height: 100px;
+  top: 15%;
+  right: 25%;
+  animation: float-gentle 15s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(20px, 20px) rotate(5deg); }
+  50% { transform: translate(0, 40px) rotate(0deg); }
+  75% { transform: translate(-20px, 20px) rotate(-5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes float-rotate {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(30px, -30px) rotate(180deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Background Checkered Pattern for Result */
+.bg-checkered {
+  background-image: linear-gradient(45deg, #eee 25%, transparent 25%), 
+                    linear-gradient(-45deg, #eee 25%, transparent 25%), 
+                    linear-gradient(45deg, transparent 75%, #eee 75%), 
+                    linear-gradient(-45deg, transparent 75%, #eee 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  background-color: white;
+}
+
+/* Loader Animation */
+.loader-vector {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  position: relative;
+  border: 4px solid var(--primary);
+  box-sizing: border-box;
+  animation: fill-square 2s linear infinite;
+}
+
+@keyframes fill-square {
+  0% { box-shadow: 0 0 0 0 var(--primary) inset; }
+  100% { box-shadow: 0 0 0 24px var(--primary) inset; }
+}
+
+/* Accordion Animation */
+.accordion-content {
+  transition: max-height 0.3s ease-out, padding 0.3s ease;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 200px; /* Adjust based on content */
+}
+
+.accordion-item.active .icon {
+  transform: rotate(45deg);
+  color: var(--accent);
+}
+
+/* Responsive Specifics */
+@media (max-width: 768px) {
+  .hero-animation {
+    opacity: 0.1;
+  }
+  
+  .shape-bezier {
+    display: none;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-sec);
+  border: 3px solid var(--background);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
